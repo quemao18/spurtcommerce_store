@@ -10,5 +10,5 @@
 export const environment = {
     production: true,
     storeUrl: 'http://localhost:9000/api/', // <Your API base url>
-    imageUrl: '' // <Your API url for image resize>
+    imageUrl: 'http://localhost:9000/api/media/image-resize' // <Your API url for image resize>
 };
