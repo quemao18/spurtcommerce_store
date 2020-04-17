@@ -9,6 +9,6 @@
  */
 export const environment = {
     production: true,
-    storeUrl: 'https://api.decasta.com.ve:8000/api/', // <Your API base url>
-    imageUrl: 'https://api.decasta.com.ve:8000/api/media/image-resize' // <Your API url for image resize>
+    storeUrl: 'https://api.decasta.com.ve/api/', // <Your API base url>
+    imageUrl: 'https://api.decasta.com.ve/api/media/image-resize' // <Your API url for image resize>
 };
