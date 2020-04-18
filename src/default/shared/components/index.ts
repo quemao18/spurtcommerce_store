@@ -88,7 +88,7 @@ export const COMPONENTS = [
         SharedModule,
         EffectsModule.forFeature([ProductControlEffect, CommonEffect]),
         AgmCoreModule,
-        NgbModule
+        NgbModule,
     ],
     declarations: [COMPONENTS],
 

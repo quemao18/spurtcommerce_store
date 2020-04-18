@@ -11,6 +11,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { SidenavMenuService } from '../sidenav-menu/sidenav-menu.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-spurt-header-menu',
@@ -25,7 +26,8 @@ export class HeaderMenuComponent implements OnInit {
   constructor(
     public sidenavMenuService: SidenavMenuService,
     public router: Router,
-    public formBuilder: FormBuilder
+    public formBuilder: FormBuilder,
+    public translate: TranslateService,
   ) {}
 
   ngOnInit() {}
@@ -34,6 +36,8 @@ export class HeaderMenuComponent implements OnInit {
     this.router.navigate(['/products'], {
       queryParams: { keyword: this.searchValue }
     });
+    this.translate.use(sessionStorage.getItem('lang')); 
+
   }
 
   // send the search value to product through navigation.If no value send 1 as default value.

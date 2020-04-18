@@ -4,9 +4,9 @@
         <form method="get" class="search-form" fxLayout="row">
             <mat-menu #categoriesMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="categories-dropdown">
             </mat-menu>
-            <input type="text" placeholder="What are you looking for ?" fxFlex (keyup)="searchData($event.target.value)">
+            <input type="text" placeholder="{{'PRODUCT.SEARCHBOX' | translate}}" fxFlex (keyup)="searchData($event.target.value)">
             <button mat-mini-fab (click)="search()" type="button" class="search-btn mat-elevation-z0 mat-mini-fab mat-accent">
-               Search
+                {{'PRODUCT.SEARCH' | translate}}
             </button>
         </form>
     </div>

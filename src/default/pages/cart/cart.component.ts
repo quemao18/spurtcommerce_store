@@ -21,6 +21,7 @@ import { ConfigService } from '../../../core/service/config.service';
 import { Router } from '@angular/router';
 import { ListsSandbox } from '../../../core/lists/lists.sandbox';
 import { Subscription } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-cart',
@@ -38,6 +39,7 @@ export class CartComponent implements OnInit, OnDestroy {
     public listSandbox: ListsSandbox,
     public router: Router,
     private changeDetectRef: ChangeDetectorRef,
+    public translate: TranslateService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
@@ -50,6 +52,7 @@ export class CartComponent implements OnInit, OnDestroy {
         this.changeDetectRef.detectChanges();
       })
     );
+    this.translate.use(sessionStorage.getItem('lang')); 
   }
 
   // increase or decrease product count

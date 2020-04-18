@@ -45,6 +45,8 @@ import {UnderDevelopingComponent} from './pages/layout/under-developing/under-de
 import {ShareButtonModule} from '@ngx-share/button';
 import {AgmCoreModule} from '@agm/core';
 import { APP_BASE_HREF } from '@angular/common';
+// import {TranslateLoader, TranslateModule, TranslateService} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 @NgModule({
     imports: [
@@ -60,16 +62,26 @@ import { APP_BASE_HREF } from '@angular/common';
             debug: true
         }),
         AgmCoreModule.forRoot({
-            apiKey: 'AIzaSyCfuTV5tYInC-Mj6YJ9LzRocVOdn3yCUGM'
+            apiKey: 'AIzaSyACnIn05GcgHYwuDIMItnUb-FlhN5HRWns'
         }),
-        DefaultRoutingModule
+        DefaultRoutingModule,
+        // TranslateModule.forRoot({
+        //     loader: {
+        //         provide: TranslateLoader,
+        //         useFactory: HttpLoaderFactory,
+        //         deps: [HttpClient]
+        //     }
+        // })
+    ],
+    exports: [
+        // TranslateModule
     ],
     declarations: [
         DefaultComponent,
         NotFoundComponent,
         DetailPageComponent,
         CONTAINERS.LayoutContainerComponent,
-        UnderDevelopingComponent
+        UnderDevelopingComponent,
     ],
     providers: [
         AppSettings,
@@ -85,7 +97,9 @@ import { APP_BASE_HREF } from '@angular/common';
         },
         {provide: APP_BASE_HREF, useValue: ''},
         ListsSandbox,
-        ListsService
+        ListsService,
+        // TranslateService
+        
     ],
     bootstrap: [DefaultComponent]
 })

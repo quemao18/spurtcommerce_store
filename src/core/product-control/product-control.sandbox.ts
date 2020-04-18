@@ -25,6 +25,7 @@ import {
   getTotalCartPrice,
 } from './reducer/product-control.selector';
 import { CheckoutModel } from './models/checkout.model';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()
 export class ProductControlSandbox {
@@ -42,11 +43,14 @@ export class ProductControlSandbox {
   productTotal: any;
   changeCountTotalPrice = 0;
   private subscriptions: Array<Subscription> = [];
+  public product: String = '';
+  public added: String = '';
 
   constructor(
     private router: Router,
     protected appState$: Store<store.AppState>,
     public snackBar: MatSnackBar,
+    public translate: TranslateService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
     this.productTotal = 0;
@@ -75,6 +79,12 @@ export class ProductControlSandbox {
    */
   addItemsToCart(item, param) {
 
+    this.translate.get('CART.ITEM').subscribe((translated: string) => {
+      this.product = translated;
+    });
+    this.translate.get('CART.ADDED').subscribe((translated: string) => {
+      this.added = translated;
+    });
 
     const id: any = item.productId;
     const id_totalOptions: any = param.totalOptions;
@@ -136,13 +146,14 @@ export class ProductControlSandbox {
     const availableData: any = {};
     availableData.options = param.totalOptions;
     cartParams.totalPrice = this.productTotal;
+
     this.snackBar.open(
-      'Product ' + item.name + ' is successfully added to cart',
+      this.product +' ' + item.name + ' ' + this.added,
       '×',
       {
         panelClass: 'success',
-        verticalPosition: 'top',
-        horizontalPosition: 'right',
+        verticalPosition: 'bottom',
+        horizontalPosition: 'center',
         duration: 3000
       }
     );

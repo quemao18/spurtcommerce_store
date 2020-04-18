@@ -2,7 +2,7 @@
     <mat-expansion-panel expanded>
         <mat-expansion-panel-header>
             <mat-panel-title>
-                <h4>Categories</h4>
+                <h4>{{'PRODUCT.CATEGORIES' | translate}}</h4>
             </mat-panel-title>
         </mat-expansion-panel-header>
         <div class="categories-wrapper categories-dropdown" perfectScrollbar>
@@ -14,14 +14,14 @@
     <mat-expansion-panel expanded>
         <mat-expansion-panel-header>
             <mat-panel-title>
-                <h4>Price </h4>
+                <h4>{{'CART.PRICE' | translate}} </h4>
                 <i *ngIf="listSandbox.priceLoading$ | async" class="fa fa-spinner fa-spin" style="font-size:24px"></i>
 
             </mat-panel-title>
         </mat-expansion-panel-header>
         <div fxLayout="row" fxLayoutAlign="space-between center" class="text-muted">
-            <span>From: <b>$</b></span>
-            <span>To: <b>$</b></span>
+            <span>{{'PRODUCT.FROM' | translate}}: <b>$</b></span>
+            <span>{{'PRODUCT.TO' | translate}}: <b>$</b></span>
         </div>
         <div fxLayout="row" fxLayoutAlign="space-between center" class="filter-price">
             <mat-slider color="primary" max="10000" min="1" thumb-label="true" [(ngModel)]="priceFrom" (input)="priceFromValue($event)" (mouseup)="selectPrice()"></mat-slider>
@@ -32,13 +32,13 @@
     <mat-expansion-panel expanded>
         <mat-expansion-panel-header>
             <mat-panel-title>
-                <h4>Condition</h4>
+                <h4>{{'PRODUCT.CONDITION' | translate}}</h4>
             </mat-panel-title>
         </mat-expansion-panel-header>
         <div fxLayout="column">
             <!-- <form [formGroup]='radioForm'> -->
             <mat-radio-group matInput>
-                <mat-radio-button *ngFor="let condition of conditions" color="primary" (change)="changeCondition($event, condition.value)" [value]="condition.value">{{condition.option}}
+                <mat-radio-button *ngFor="let condition of conditions" color="primary" (change)="changeCondition($event, condition.value)" [value]="condition.value">{{condition.option | translate}}
                 </mat-radio-button>
             </mat-radio-group>
             <!-- </form> -->
@@ -48,7 +48,7 @@
     <mat-expansion-panel expanded>
         <mat-expansion-panel-header>
             <mat-panel-title>
-                <h4>Brands</h4>
+                <h4>{{'PRODUCT.BRANDS' | translate}}</h4>
             </mat-panel-title>
         </mat-expansion-panel-header>
         <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="filter-brands">

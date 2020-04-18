@@ -34,6 +34,7 @@ import { Subscription } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { AuthSandbox } from '../../../core/auth/auth.sandbox';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-checkout',
@@ -71,6 +72,9 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   seasons = ['a', 'b', 'c'];
   // subscriptions for unsuscribe the api respone
   private subscriptions: Array<Subscription> = [];
+  public needLogin: String = '';
+  public needItems: String = '';
+
 
   constructor(
     public formBuilder: FormBuilder,
@@ -83,7 +87,8 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     public authSandbox: AuthSandbox,
     public configService: ConfigService,
     @Inject(PLATFORM_ID) private platformId: Object,
-    private changeDetectRef: ChangeDetectorRef
+    private changeDetectRef: ChangeDetectorRef,
+    public translate: TranslateService,
   ) {}
 
   // Initially calls initCheckoutForm function
@@ -97,6 +102,13 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       }
     }
     this.imagePath = environment.imageUrl;
+    this.translate.use(sessionStorage.getItem('lang')); 
+    this.translate.get('CART.LOGIN').subscribe((translated: string) => {
+      this.needLogin = translated;
+    });
+    this.translate.get('CART.ADDITEMS').subscribe((translated: string) => {
+      this.needItems = translated;
+    });
   }
   getSessionData() {
     if (isPlatformBrowser(this.platformId)) {
@@ -184,11 +196,12 @@ export class CheckoutComponent implements OnInit, OnDestroy {
    * @param productDetails detail of the product for checkout
    */
   public placeOrder(productDetails) {
+
       if (!localStorage.getItem('userToken')) {
-        this.snackBar.open('Login or Create Account to continue', '×', {
+        this.snackBar.open(this.needLogin.toString(), '×', {
           panelClass: 'error',
           verticalPosition: 'top',
-          horizontalPosition: 'right',
+          horizontalPosition: 'center',
           duration: 3000
         });
         this.router.navigate(['/auth']);
@@ -196,10 +209,10 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       }
         this.submitted = true;
         if (productDetails.length === 0) {
-          this.snackBar.open('Add items to place order', '×', {
+          this.snackBar.open(this.needItems.toString(), '×', {
             panelClass: 'error',
             verticalPosition: 'top',
-            horizontalPosition: 'right',
+            horizontalPosition: 'center',
             duration: 3000
           });
           return;

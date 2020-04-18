@@ -1,7 +1,7 @@
 <div class="order-wrap" *ngIf="!(accountSandbox.orderHistoryDetailLoading$ | async)">
 
     <div class="flex order-top" *ngIf="(accountSandbox.orderHistoryDetail$ | async) as detail">
-        <h3>Order Id #{{(accountSandbox.orderHistoryDetail$ | async).orderPrefixId }}</h3>
+        <h3>{{'ACCOUNT.ORDER' | translate}} Id #{{(accountSandbox.orderHistoryDetail$ | async).orderPrefixId }}</h3>
     </div>
     <!-- Top -->
 
@@ -10,21 +10,21 @@
         <div class="flex order-row" *ngIf="(!accountSandbox.orderHistoryDetailLoading$ | async) && (accountSandbox.orderHistoryDetailLoaded$ | async)">
 
             <div class="order-col">
-                <h3>Order Id #{{(accountSandbox.orderHistoryDetail$ | async).orderId }}</h3>
+                <h3>{{'ACCOUNT.ORDER' | translate}} Id #{{(accountSandbox.orderHistoryDetail$ | async).orderId }}</h3>
                 <div class="order-lft-detail">
                     <h4>
-                        <span>Order Date </span> {{(accountSandbox.orderHistoryDetail$ | async).createdDate | date:'dd/MMM/yyyy'}} </h4>
-                    <h4><span>Order Status </span> <span class="process">Processing</span></h4>
+                        <span>{{'ACCOUNT.ORDER' | translate}} {{'ACCOUNT.DATE' | translate}} </span> {{(accountSandbox.orderHistoryDetail$ | async).createdDate | date:'dd/MMM/yyyy'}} </h4>
+                    <h4><span>{{'ACCOUNT.ORDER' | translate}} {{'ACCOUNT.STATUS' | translate}} </span> <span class="process">Processing</span></h4>
                 </div>
             </div>
             <!--  -->
 
             <div class="order-col">
-                <h3>Customer Information</h3>
+                <h3>{{'ACCOUNT.CUSTOMMERINFO' | translate}}n</h3>
                 <div class="order-lft-detail">
                     <h4>
-                        <span>Customer Name </span> {{(accountSandbox.orderHistoryDetail$ | async).shippingFirstname + ' ' +(accountSandbox.orderHistoryDetail$ | async).shippingLastname}} </h4>
-                    <h4><span>Email Id  </span> <a>{{(accountSandbox.orderHistoryDetail$ |
+                        <span>{{'ACCOUNT.CUSTOMERNAME' | translate}} </span> {{(accountSandbox.orderHistoryDetail$ | async).shippingFirstname + ' ' +(accountSandbox.orderHistoryDetail$ | async).shippingLastname}} </h4>
+                    <h4><span>{{'LOGIN.EMAIL' | translate}} Id  </span> <a>{{(accountSandbox.orderHistoryDetail$ |
                         async).email}}</a></h4>
                 </div>
             </div>
@@ -36,7 +36,7 @@
         <div class="flex order-row">
 
             <div class="order-col">
-                <h3>Shipping Address</h3>
+                <h3>{{'ACCOUNT.SHIPPINGADDRESS' | translate}}</h3>
                 <div class="order-lft-detail">
                     <p class="addr" *ngIf="(accountSandbox.orderHistoryDetail$ | async).shippingAddress1 ||(accountSandbox.orderHistoryDetail$ | async).shippingAddress2">
                         {{(accountSandbox.orderHistoryDetail$ | async).shippingAddress1 + ' '+(accountSandbox.orderHistoryDetail$ | async).shippingAddress2}} </p>
@@ -49,7 +49,7 @@
             <!--  -->
 
             <div class="order-col">
-                <h3>Billing Address</h3>
+                <h3>{{'ACCOUNT.BILLINGADDRESS' | translate}}</h3>
                 <div class="order-lft-detail">
                     <p class="addr" *ngIf="(accountSandbox.orderHistoryDetail$ | async).shippingAddress1 || (accountSandbox.orderHistoryDetail$ | async).shippingAddress2">
                         {{(accountSandbox.orderHistoryDetail$ | async).shippingAddress1 + ' '+(accountSandbox.orderHistoryDetail$ | async).shippingAddress2}} </p>
@@ -65,13 +65,13 @@
         <!--  Order Row-->
 
         <div class="order-table" *ngIf="(accountSandbox.orderHistoryDetail$ | async) as detail">
-            <h3>Items List</h3>
+            <h3>{{'ACCOUNT.ITEMSLIST' | translate}}</h3>
             <table class="table">
                 <tr>
-                    <th width="40%">Products</th>
-                    <th width="20%" class="text-center">Price</th>
-                    <th width="20%" class="text-right">Qty</th>
-                    <th width="20%" class="text-right">Total</th>
+                    <th width="40%">{{'CART.ITEM' | translate}}</th>
+                    <th width="20%" class="text-center">{{'CART.PRICE' | translate}}</th>
+                    <th width="20%" class="text-right">{{'CART.QTY' | translate}}</th>
+                    <th width="20%" class="text-right">Sub Total</th>
                 </tr>
 
 
@@ -91,7 +91,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="3" class="text-right total-amount">Total Amount</td>
+                    <td colspan="3" class="text-right total-amount">Total</td>
                     <td class="text-right total-amount"><b>$ {{(accountSandbox.orderHistoryDetail$ | async).total}}</b></td>
                 </tr>
             </table>
@@ -100,7 +100,7 @@
 
         <div class="flex order-btn" *ngIf="(accountSandbox.orderHistoryDetail$ | async) as detail">
             <a [routerLink]='["/account/orders"]'>Cancel </a>
-            <a class="dload" (click)="downloadInvoiceDetail(detail)"> Download Invoice </a>
+            <a class="dload" (click)="downloadInvoiceDetail(detail)"> {{'ACCOUNT.DOWNLOADINVOICE' | translate}} </a>
         </div>
 
     </div>

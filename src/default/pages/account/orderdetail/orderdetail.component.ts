@@ -19,6 +19,7 @@ import { Subscription, Observable, Observer } from 'rxjs';
 // invoice pdf
 import * as pdfMake from 'pdfmake/build/pdfmake.js';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts.js';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-order-detail',
@@ -58,7 +59,8 @@ export class OrderDetailComponent implements OnInit, OnDestroy {
     public listSandbox: ListsSandbox,
     private route: ActivatedRoute,
     public datePipe: DatePipe,
-    public fb: FormBuilder
+    public fb: FormBuilder,
+    public translate: TranslateService,
   ) {
     pdfMake.vfs = pdfFonts.pdfMake.vfs;
     this.regSubscribeEvents();
@@ -73,6 +75,7 @@ export class OrderDetailComponent implements OnInit, OnDestroy {
       // this is the image as dataUrl
       this.postImage = 'data:image/jpg;base64,' + base64data;
     }); // subscribe and get the id from the router
+    this.translate.use(sessionStorage.getItem('lang')); 
   }
 
   convertBase64(inputValue: any) {

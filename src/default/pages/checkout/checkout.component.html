@@ -3,88 +3,90 @@
 
         <div fxFlex="100" fxFlex.gt-sm="50" class="p-2 billing-address">
             <div class="flex custom-field mb-2">
-                <input type="text" formControlName="firstName" placeholder="First Name" [ngClass]="{'has-error': !checkoutForm.controls['firstName'].valid && submitted}">
+                <input type="text" formControlName="firstName" placeholder="{{'CONTACT.NAME' | translate}}" [ngClass]="{'has-error': !checkoutForm.controls['firstName'].valid && submitted}">
                 <mat-error *ngIf="checkoutForm.controls['firstName'].hasError('required')&&submitted">
-                    First Name is required
+                    {{'VALIDATION.NAMEREQUIRED' | translate}}
                 </mat-error>
 
             </div>
             <div class="flex custom-field mb-2">
                 <!--<div class="width-inline">-->
-                <input type="text" formControlName="lastName" placeholder="Last Name" [ngClass]="{'has-error': !checkoutForm.controls['lastName'].valid && submitted}">
+                <input type="text" formControlName="lastName" placeholder="{{'CONTACT.LASTNAME' | translate}}" [ngClass]="{'has-error': !checkoutForm.controls['lastName'].valid && submitted}">
                 <mat-error *ngIf="checkoutForm.controls['lastName'].hasError('required')&&submitted">
-                    Last Name is required
+                    {{'VALIDATION.LASTNAMEREQUIRED' | translate}}
                 </mat-error>
                 <!--</div>-->
             </div>
             <div class="flex custom-field mb-2">
-                <input type="text" formControlName="email" placeholder="Email" [ngClass]="{'has-error': !checkoutForm.controls['email'].valid && submitted  }">
+                <input type="text" formControlName="email" placeholder="{{'LOGIN.EMAIL' | translate}}" [ngClass]="{'has-error': !checkoutForm.controls['email'].valid && submitted  }">
                 <mat-error *ngIf="checkoutForm.controls['email'].hasError('required')&&submitted">
-                    Email is required
+                    {{'VALIDATION.EMAILREQUIDER' | translate}}
                 </mat-error>
                 <mat-error *ngIf="checkoutForm.controls['email'].hasError('invalidEmail')&&submitted">
-                    Email must be valid
+                    {{'VALIDATION.EMAILINVALID' | translate}}
                 </mat-error>
             </div>
 
             <div class="flex custom-field mb-2">
-                <input type="text" maxlength="15" appOnlyNumber formControlName="phone" placeholder="Phone" [ngClass]="{'has-error': !checkoutForm.controls['phone'].valid && submitted}">
+                <input type="text" maxlength="15" appOnlyNumber formControlName="phone" placeholder="{{'CONTACT.PHONENUMBER' | translate}}" [ngClass]="{'has-error': !checkoutForm.controls['phone'].valid && submitted}">
                 <mat-error *ngIf="(checkoutForm.controls['phone'].hasError('required')&&submitted)||(checkoutForm.controls['phone'].hasError('pattern')&&submitted)">
-                    Phone number is required
+                    {{'VALIDATION.PHONEREQUIRED' | translate}}
                 </mat-error>
             </div>
 
             <div class="flex custom-field mb-2">
-                <div class="width-inline">
-                    <select formControlName="country" [ngClass]="{'has-error': !checkoutForm.controls['country'].valid && submitted}">
-                        <option value=''>--Select Country--</option>
+                <div class="width-inline" style="width: 100%;">
+                    <select  formControlName="country" [ngClass]="{'has-error': !checkoutForm.controls['country'].valid && submitted}">
+                        <option value=''>-- {{'CONTACT.SELECTCOUNTRY' | translate}} --</option>
                         <option *ngFor="let list of listsSandbox.countryList$ | async" [value]="list.countryId">
                             {{list.name}}
                         </option>
 
                     </select>
                     <mat-error *ngIf="checkoutForm.controls['country'].hasError('required')&&submitted">
-                        Country is required
+                        {{'VALIDATION.COUNTRYREQUIRED' | translate}}
                     </mat-error>
 
                 </div>
             </div>
-            <h2 class="text-dark">Address</h2>
+            <h2 class="text-dark">{{'CONTACT.ADDRESS' | translate}}</h2>
 
-            <mat-error *ngIf="checkoutForm.controls['address'].hasError('required')&&submitted&&newAddress">
-                Address is required
-            </mat-error>
+            <!-- <mat-error *ngIf="checkoutForm.controls['address'].hasError('required')&&submitted&&newAddress">
+                {{'VALIDATION.ADDRESSREQUIRED' | translate}}
+            </mat-error> -->
 
             <ng-container>
                 <div class="newaddress">
                     <div class="flex custom-field mb-2">
-                        <input type="text" formControlName="address" ng-pattern="/^[a-zA-Z. ]*[a-zA-Z]{1,60}$/" placeholder="Address" [ngClass]="{'has-error': !checkoutForm.controls['address'].valid && submitted }">
+                        <input type="text" formControlName="address" ng-pattern="/^[a-zA-Z. ]*[a-zA-Z]{1,60}$/" 
+                        placeholder="{{'CONTACT.ADDRESS' | translate}}" 
+                        [ngClass]="{'has-error': !checkoutForm.controls['address'].valid && submitted }">
                         <mat-error *ngIf="checkoutForm.controls['address'].hasError('required')&&submitted">
-                            Address is required
+                            {{'VALIDATION.ADDRESSREQUIRED' | translate}}
                         </mat-error>
                     </div>
                     <div class="flex custom-field mb-2">
-                        <input type="text" formControlName="addressLine" placeholder="Address 1">
+                        <input type="text" formControlName="addressLine" placeholder="{{'CONTACT.ADDRESS' | translate}} 2">
                     </div>
                     <div class="flex custom-field mb-2">
                         <div class="width-inline">
-                            <input type="text" formControlName="city" placeholder="City" [ngClass]="{'has-error': !checkoutForm.controls['city'].valid && submitted}">
+                            <input type="text" formControlName="city" placeholder="{{'CONTACT.CITY' | translate}}" [ngClass]="{'has-error': !checkoutForm.controls['city'].valid && submitted}">
                             <mat-error *ngIf="checkoutForm.controls['city'].hasError('required')&&submitted">
-                                City is required
+                                {{'VALIDATION.CITYREQUIRED' | translate}}
                             </mat-error>
                         </div>
                         <div class="width-inline">
-                            <input type="text" formControlName="state" placeholder="State/Province" [ngClass]="{'has-error': !checkoutForm.controls['state'].valid && submitted}">
+                            <input type="text" formControlName="state" placeholder="{{'CONTACT.STATE' | translate}}" [ngClass]="{'has-error': !checkoutForm.controls['state'].valid && submitted}">
                             <mat-error *ngIf="checkoutForm.controls['state'].hasError('required')&&submitted">
-                                State is required
+                                {{'VALIDATION.STATEREQUIRED' | translate}}
                             </mat-error>
                         </div>
                     </div>
                     <div class="flex custom-field mb-2">
                         <div class="width-inline">
-                            <input type="text" maxlength="7" appOnlyNumber formControlName="zip" placeholder="Zipcode" [ngClass]="{'has-error': !checkoutForm.controls['zip'].valid && submitted}">
+                            <input type="text" maxlength="7" appOnlyNumber formControlName="zip" placeholder="{{'CONTACT.ZIP' | translate}}" [ngClass]="{'has-error': !checkoutForm.controls['zip'].valid && submitted}">
                             <mat-error *ngIf="checkoutForm.controls['zip'].hasError('required')&&submitted">
-                                Zip is required
+                                {{'VALIDATION.ZIPREQUIRED' | translate}}
                             </mat-error>
                         </div>
                     </div>
@@ -94,7 +96,8 @@
         </div>
         <!---->
         <div fxFlex="100" fxFlex.gt-sm="50" class="p-2" ngClass.sm="mt-2" ngClass.xs="mt-2" ngClass="billing-address">
-            <h2 class="text-dark">Your Items ({{productControlSandbox.cartlistCount$ | async}}) <a href="javascript:void(0)" [routerLink]="['/cart']">View Cart</a></h2>
+            <h2 class="text-dark">{{'CART.YOURITEMS' | translate}} ({{productControlSandbox.cartlistCount$ | async}}) 
+                <a href="javascript:void(0)" [routerLink]="['/cart']">{{'CART.VIEW' | translate}}</a></h2>
             <div class="item-table">
                 <table class="table" cellspacing="0" cellpadding="0" *ngIf="(productControlSandbox.cartlistCount$ | async) > 0">
                     <tr *ngFor="let products of productControlSandbox.cartlist$ | async; let i = index">
@@ -137,7 +140,7 @@
 
                 <a *ngIf="productControlSandbox.cartlist$ | async as productDetails" (click)="placeOrder(productDetails)" mat-raised-button color="primary" class="proceed-chk">
                     <i *ngIf="productControlSandbox.checkoutLoading$ | async" class="fa fa-spinner fa-spin" style="font-size:24px"></i>
-                    <img *ngIf="!(productControlSandbox.checkoutLoading$ | async)" src="assets/images/others/checkout.png">Place Order
+                    <img *ngIf="!(productControlSandbox.checkoutLoading$ | async)" src="assets/images/others/checkout.png">{{'CART.PLACEORDER' | translate}}
                 </a>
             </div>
         </div>

@@ -14,6 +14,7 @@ import {Settings, AppSettings} from './app.settings';
 // service
 import { OnInit, AfterViewInit, PLATFORM_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-root',
@@ -25,6 +26,7 @@ export class DefaultComponent implements OnInit , AfterViewInit {
     public settings: Settings;
 
     constructor(public appSettings: AppSettings,
+                public translate: TranslateService,
                 public router: Router,
                 @Inject(PLATFORM_ID) private platformId: Object) {
         this.settings = this.appSettings.settings;

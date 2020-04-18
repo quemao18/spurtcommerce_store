@@ -13,6 +13,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatSnackBar} from '@angular/material';
 import {emailValidator, matchingPasswords} from '../../../theme/utils/app-validators';
 import {AuthSandbox} from '../../../../core/auth/auth.sandbox';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -27,6 +28,7 @@ export class AuthComponent implements OnInit {
     public submitted = false;
 
     constructor(public formBuilder: FormBuilder,
+                public translate: TranslateService,
                 public router: Router,
                 public snackBar: MatSnackBar,
                 public authSandbox: AuthSandbox) {
@@ -43,7 +45,8 @@ export class AuthComponent implements OnInit {
             'confirmPassword': ['', Validators.compose([Validators.required])],
             'phoneNumber': ['', Validators.compose([Validators.required, Validators.pattern(mobileValidationPattern)])]
         }, {validator: matchingPasswords('password', 'confirmPassword')});
-
+       
+        this.translate.use(sessionStorage.getItem('lang')); 
     }
 
     /** calls authSandbox doRegister if tthe from is valid.

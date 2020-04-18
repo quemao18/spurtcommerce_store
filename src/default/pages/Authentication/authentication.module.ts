@@ -51,7 +51,7 @@ export const routes = [
         SharedModule,
         ComponentsModule,
         EffectsModule.forFeature([AuthEffects]),
-        NumberAcceptModule
+        NumberAcceptModule, 
     ],
     declarations: [
         SignInComponent,

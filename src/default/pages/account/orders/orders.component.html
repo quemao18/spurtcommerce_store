@@ -7,10 +7,10 @@
         </div>
     </div>
     <div class="mat-header-row">
-        <div class="mat-header-cell">Orders</div>
-        <div class="mat-header-cell">Date</div>
-        <div class="mat-header-cell">Status</div>
-        <div class="mat-header-cell">Total Amount</div>
+        <div class="mat-header-cell">{{'ACCOUNT.ORDER' | translate}}</div>
+        <div class="mat-header-cell">{{'ACCOUNT.DATE' | translate}}</div>
+        <div class="mat-header-cell">{{'ACCOUNT.STATUS' | translate}}</div>
+        <div class="mat-header-cell">{{'CART.TOTAL' | translate}}</div>
         <div class="mat-header-cell"></div>
     </div>
     <div *ngFor="let order of accountSandbox.orderHistoryList$ | async; let i = index" class="mat-row">
