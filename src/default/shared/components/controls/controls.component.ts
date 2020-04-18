@@ -23,6 +23,7 @@ import { ProductControlSandbox } from '../../../../core/product-control/product-
 import { Router } from '@angular/router';
 import { ListsSandbox } from '../../../../core/lists/lists.sandbox';
 import { Subscription } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-controls',
@@ -56,6 +57,7 @@ export class ControlsComponent implements OnInit, OnDestroy {
     public controlSandbox: ProductControlSandbox,
     public listSandbox: ListsSandbox,
     private router: Router,
+    public translate: TranslateService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
@@ -70,6 +72,7 @@ export class ControlsComponent implements OnInit, OnDestroy {
       }
     }
     this.layoutAlign();
+    this.translate.use(sessionStorage.getItem('lang')); 
   }
 
   // align layout based on condition type

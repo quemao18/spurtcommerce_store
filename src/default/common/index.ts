@@ -15,7 +15,6 @@ import {ComponentsModule} from '../shared/components/index';
 import {SharedModule} from '../shared/shared.module';
 
 
-
 export const CONTAINERS = {
     LayoutContainerComponent
 };
@@ -26,7 +25,7 @@ export const CONTAINERS = {
       SharedModule,
   ],
   declarations: [],
-  providers: []
+  providers: [ ] 
 })
 export class ContainerModule {
 }

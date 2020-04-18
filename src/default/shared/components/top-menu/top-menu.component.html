@@ -1,12 +1,12 @@
 <div class="top-menu">
     <a mat-button [matMenuTriggerFor]="accountMenu" #accountMenuTrigger="matMenuTrigger" class="blackStyle" *ngIf="(commonSandbox.getProfile$ | async)?.email">
         <mat-icon class="mat-icon-sm account-icon blackStyle">person</mat-icon>
-        <span fxShow="false" fxShow.gt-sm class="blackStyle">Account</span>
+        <span fxShow="false" fxShow.gt-sm class="blackStyle">{{'ACCOUNT.TITLE' | translate}}</span>
         <mat-icon class="mat-icon-sm caret blackStyle">arrow_drop_down</mat-icon>
     </a>
     <a mat-button routerLink="/auth" *ngIf="!(commonSandbox.getProfile$ | async)?.email">
-        <mat-icon routerLink="/auth" class="mat-icon-sm account-icon blackStyle">person</mat-icon>
-        <span fxShow="false" fxShow.gt-sm class="blackStyle">Login/Register</span>
+        <mat-icon routerLink="/auth" class="mat-icon-lg account-icon blackStyle">person</mat-icon>
+        <span fxShow="false" fxShow.gt-sm class="blackStyle"> </span>
     </a>
 
     <mat-menu #accountMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="app-dropdown account">
@@ -25,16 +25,16 @@
             <a mat-menu-item routerLink="/account/orders">
                 <mat-icon class="mat-icon-sm"><mat-icon>description</mat-icon>
             </mat-icon>
-                <span>Order History</span>
+                <span>{{'ACCOUNT.ORDERHISTORY' | translate}}</span>
         </a>
         <a mat-menu-item routerLink="/account">
             <mat-icon class="mat-icon-sm">settings</mat-icon>
-            <span>Account Settings</span>
+            <span>{{'ACCOUNT.SETTINGS' | translate}}</span>
         </a>
         <div class="divider"></div>
         <a mat-menu-item (click)="signOut()">
             <mat-icon class="mat-icon-sm">power_settings_new</mat-icon>
-            <span>Sign Out</span>
+            <span>{{'LOGIN.EXIT' | translate}}</span>
         </a>
         </span>
     </mat-menu>

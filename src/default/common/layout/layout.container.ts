@@ -14,6 +14,7 @@ import {Settings, AppSettings} from '../../app.settings';
 import {SidenavMenuService} from '../../shared/components/sidenav-menu/sidenav-menu.service';
 import {ListsSandbox} from '../../../core/lists/lists.sandbox';
 import {Subscription} from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-layout',
@@ -30,16 +31,29 @@ export class LayoutContainerComponent implements OnInit, AfterViewInit {
     // AppSettings
     public settings: Settings;
     private subscriptions: Array<Subscription> = [];
+    public lang: String; 
 
     constructor(public appSettings: AppSettings, public sidenavMenuService: SidenavMenuService,
+                public translate: TranslateService,
                 public router: Router, public listSandBox: ListsSandbox, @Inject(PLATFORM_ID) private platformId: Object) {
         this.settings = this.appSettings.settings;
+        // this.translate.setDefaultLang('es')
+        this.lang = sessionStorage.getItem('lang') ? sessionStorage.getItem('lang'): 'es';
     }
 
     ngOnInit() {
+        // this.translate.setDefaultLang('en');
+        this.translate.use(this.lang.toString());
+        sessionStorage.setItem('lang', this.lang.toString());
         this.getCategories();
         this.getSettings();
         this.changeTheme('green');
+    }
+
+    changeLang(lang){
+        this.translate.use(lang);
+        sessionStorage.setItem('lang', lang);
+        this.router.navigate(['/']);
     }
 
     @HostListener('window:scroll', ['$event'])

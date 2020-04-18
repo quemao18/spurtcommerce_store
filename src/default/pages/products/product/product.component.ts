@@ -18,6 +18,7 @@ import { ListsSandbox } from '../../../../core/lists/lists.sandbox';
 import { ConfigService } from '../../../../core/service/config.service';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product',
@@ -53,7 +54,9 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewInit {
     public productDetail: ListsSandbox,
     private configService: ConfigService,
     private changeDetectRef: ChangeDetectorRef,
-    private router: Router
+    private router: Router,
+    public translate: TranslateService,
+
   ) {
     this.router.events.subscribe(evt => {
       if (evt instanceof NavigationEnd) {
@@ -73,6 +76,8 @@ export class ProductComponent implements OnInit, OnDestroy, AfterViewInit {
       this.getProductdetail();
       this.getBannerList();
     });
+    this.translate.use(sessionStorage.getItem('lang')); 
+
   }
 
   // fetch banner list from sandbox

@@ -15,6 +15,7 @@ import { ProductControlService } from '../../../../core/product-control/product-
 import { ConfigService } from '../../../../core/service/config.service';
 import { Router } from '@angular/router';
 import { ListsSandbox } from '../../../../core/lists/lists.sandbox';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-spurt-cart',
@@ -32,6 +33,7 @@ export class CartNavComponent implements OnInit {
 
   constructor(
     public sidenavMenuService: SidenavMenuService,
+    public translate: TranslateService,
     public cartSandbox: ProductControlSandbox,
     public router: Router,
     public listSandbox: ListsSandbox,
@@ -43,6 +45,7 @@ export class CartNavComponent implements OnInit {
   ngOnInit() {
     // this.imagePath = this.configService.get('resize').imageUrl;
     this.imagePath = this.configService.getImageUrl();
+    this.translate.use(sessionStorage.getItem('lang')); 
   }
 
   // remove product from cart

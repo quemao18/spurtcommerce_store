@@ -25,6 +25,7 @@ import { Router } from '@angular/router';
 import { ListsSandbox } from '../../../../core/lists/lists.sandbox';
 import { ConfigService } from '../../../../core/service/config.service';
 import { Subscription } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-spurt-product-filter',
@@ -37,9 +38,9 @@ export class ProductFilterComponent implements OnInit, OnChanges, OnDestroy {
   public priceTo: any = '';
   // filter used new
   public conditions = [
-    { option: 'All', value: '' },
-    { option: 'New', value: 1 },
-    { option: 'Used', value: 2 }
+    { option: 'PRODUCT.ALL', value: '' },
+    { option: 'PRODUCT.NEW', value: 1 },
+    { option: 'PRODUCT.USED', value: 2 }
   ];
   // product list
   private keyword: any = '';
@@ -61,7 +62,9 @@ export class ProductFilterComponent implements OnInit, OnChanges, OnDestroy {
     public listSandbox: ListsSandbox,
     private configService: ConfigService,
     private fb: FormBuilder,
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Object,
+    public translate: TranslateService,
+
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -71,6 +74,7 @@ export class ProductFilterComponent implements OnInit, OnChanges, OnDestroy {
   ngOnInit() {
     this.imagePath = this.configService.getImageUrl();
     this.getBrands();
+    this.translate.use(sessionStorage.getItem('lang')); 
 
     /**               INITIALLY SET VALUE  (FROM PRICE) AND  (TO PRICE)
      * subscribe listSandbox maxProductPrice$  to get  maximum product price and as well as set default minimum price.

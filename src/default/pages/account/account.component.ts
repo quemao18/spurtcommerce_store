@@ -18,6 +18,7 @@ import { ProductControlSandbox } from '../../../core/product-control/product-con
 import { filter, map, mergeMap } from 'rxjs/operators';
 import { ListsSandbox } from '../../../core/lists/lists.sandbox';
 import { Subscription } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-account',
@@ -30,11 +31,13 @@ export class AccountComponent implements OnInit, AfterViewInit, OnDestroy {
   public sidenavOpen = true;
   private subscription: Array<Subscription> = [];
   public links = [
-    { name: 'Account Dashboard', href: 'dashboard', icon: 'dashboard' },
-    { name: 'Account Information', href: 'information', icon: 'info' },
-    { name: 'Order History', href: 'orders', icon: 'add_shopping_cart' },
-    { name: 'Logout', href: '/logout', icon: 'power_settings_new' }
+    { name: 'Dashboard', href: 'dashboard', icon: 'dashboard' },
+    { name: 'ACCOUNT.ACCOUNTINFO', href: 'information', icon: 'info' },
+    { name: 'ACCOUNT.ORDERHISTORY', href: 'orders', icon: 'add_shopping_cart' },
+    { name: 'LOGIN.EXIT', href: '/logout', icon: 'power_settings_new' }
   ];
+
+  public lang: String;
 
   constructor(
     public router: Router,
@@ -42,7 +45,8 @@ export class AccountComponent implements OnInit, AfterViewInit, OnDestroy {
     public productControl: ProductControlSandbox,
     public listSandbox: ListsSandbox,
     @Inject(PLATFORM_ID) private platformId: Object,
-    public commonSandbox: CommonSandbox
+    public commonSandbox: CommonSandbox,
+    public translate: TranslateService,
   ) {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
@@ -66,14 +70,17 @@ export class AccountComponent implements OnInit, AfterViewInit, OnDestroy {
     if (window.innerWidth < 960) {
       this.sidenavOpen = false;
     }
+    this.lang = sessionStorage.getItem('lang');
+    this.translate.use(sessionStorage.getItem('lang')); 
   }
   // calls commonSandbox doSignout function for doing logout
   doLogOut(name) {
-    if (name === 'Logout') {
+    if (name === 'LOGIN.EXIT') {
       if (isPlatformBrowser(this.platformId)) {
         localStorage.clear();
         sessionStorage.clear();
       }
+      sessionStorage.setItem('lang', this.lang.toString());
       this.productControl.clearCart();
       this.commonSandbox.doSignout();
       this.router.navigate(['/auth']);

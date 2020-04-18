@@ -42,9 +42,9 @@ export const routes = [
         component: AccountComponent, children: [
         {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
         {path: 'dashboard', component: DashboardComponent, data: {breadcrumb: 'Dashboard'}},
-        {path: 'information', component: InformationComponent, data: {breadcrumb: 'Information'}},
-        {path: 'orders', component: OrdersComponent, data: {breadcrumb: 'Orders'}},
-        {path: 'order-detail/:id', component: OrderDetailComponent, data: {breadcrumb: 'Order Detail'}}
+        {path: 'information', component: InformationComponent, data: {breadcrumb: 'ACCOUNT.INFO'}},
+        {path: 'orders', component: OrdersComponent, data: {breadcrumb: 'ACCOUNT.ORDERS'}},
+        {path: 'order-detail/:id', component: OrderDetailComponent, data: {breadcrumb: 'ACCOUNT.ORDERDETAIL'}}
     ]
     }
 ];

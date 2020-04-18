@@ -15,6 +15,7 @@ import { Subscription, Observable, Observer } from 'rxjs';
 // invoice pdfmake
 import * as pdfMake from 'pdfmake/build/pdfmake.js';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts.js';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
@@ -37,7 +38,8 @@ export class OrdersComponent implements OnInit, OnDestroy {
   constructor(
     public accountSandbox: AccountSandbox,
     public listSandbox: ListsSandbox,
-    public datePipe: DatePipe
+    public datePipe: DatePipe,
+    public translate: TranslateService,
   ) {
     pdfMake.vfs = pdfFonts.pdfMake.vfs;
     this.regSubscribeEvents();
@@ -50,6 +52,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
     this.convertBase64(this.captureDataUrl).subscribe(base64data => {
       this.postImage = 'data:image/jpg;base64,' + base64data;
     });
+    this.translate.use(sessionStorage.getItem('lang')); 
   }
   convertBase64(inputValue: any) {
     return Observable.create((observer: Observer<string>) => {

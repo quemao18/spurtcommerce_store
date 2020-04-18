@@ -21,6 +21,7 @@ import { MatSnackBar } from '@angular/material';
 import { ProductControlSandbox } from '../../../../core/product-control/product-control.sandbox';
 import { Router } from '@angular/router';
 import { ListsSandbox } from '../../../../core/lists/lists.sandbox';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-controls-product-detail',
@@ -48,7 +49,8 @@ export class ControlsProductDetailComponent implements OnInit {
     @Inject(PLATFORM_ID) private platformId: Object,
     public controlSandbox: ProductControlSandbox,
     public listSandbox: ListsSandbox,
-    private router: Router
+    private router: Router,
+    public translate: TranslateService,
   ) {}
 
   // intially get the cart data and calls layoutAlign
@@ -62,6 +64,7 @@ export class ControlsProductDetailComponent implements OnInit {
       }
     }
     this.layoutAlign();
+    this.translate.use(sessionStorage.getItem('lang')); 
   }
 
   // align layout based on condition type

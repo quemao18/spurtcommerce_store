@@ -1,24 +1,24 @@
 <!--<div fxFlex="100"  class="p-2">-->
-<h2 class="text-muted text-center">Sign In</h2>
+<h2 class="text-muted text-center">{{'LOGIN.SIGNIN' | translate}}</h2>
 <form [formGroup]="loginForm" novalidate>
     <mat-form-field class="w-100 mt-2" [ngClass]="{'validationcolor':
     (loginForm.controls.email.hasError('required') && submitted)}">
-        <input matInput placeholder="Email" formControlName="email">
+        <input matInput placeholder="{{'LOGIN.EMAIL' | translate}}" formControlName="email">
         <mat-error *ngIf="loginForm.controls['email'].hasError('required') && submitted">
-            Email is required
+            {{'VALIDATION.EMAILREQUIRED' | translate}}
         </mat-error>
         <mat-error *ngIf="loginForm.controls['email'].hasError('invalidEmail') && submitted">
-            Invalid email address
+            {{'VALIDATION.EMAILINVALID' | translate}}
         </mat-error>
     </mat-form-field>
     <mat-form-field class="w-100 mt-1" [ngClass]="{'validationcolor':
     (loginForm.controls.password.hasError('required') && submitted)}">
-        <input matInput placeholder="Password" formControlName="password" type="password">
+        <input matInput placeholder="{{'LOGIN.PASSWORD' | translate}}" formControlName="password" type="password">
         <mat-error *ngIf="loginForm.controls['password'].hasError('required') && submitted">
-            Password is required
+            {{'VALIDATION.PASSWORDREQUIRED' | translate}}
         </mat-error>
         <mat-error *ngIf="loginForm.controls['password'].hasError('minlength') && submitted">
-            Password isn't long enough, minimum of 5 characters
+            {{'VALIDATION.PASSWORDMINLENGTH' | translate}}
         </mat-error>
     </mat-form-field>
     <div class="text-center mt-2">
@@ -30,7 +30,7 @@
     </div>
     <div fxLayout="row" fxLayoutAlign="space-between center" class="mt-2">
         <h5 class="text-muted auth forgot" routerLink="/auth/forgot">
-            Forgot Password?</h5>
+            {{'LOGIN.FORGOT' | translate}}</h5>
     </div>
 
 </form>

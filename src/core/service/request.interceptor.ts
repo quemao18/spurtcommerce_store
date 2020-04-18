@@ -137,7 +137,7 @@ export class RequestInterceptor implements HttpInterceptor {
     this.snackBar.open(message, '×', {
       panelClass: 'error',
       verticalPosition: 'top',
-      horizontalPosition: 'right',
+      horizontalPosition: 'center',
       duration: 3000
     });
   }
@@ -146,7 +146,7 @@ export class RequestInterceptor implements HttpInterceptor {
     this.snackBar.open(message, '×', {
       panelClass: 'success',
       verticalPosition: 'top',
-      horizontalPosition: 'right',
+      horizontalPosition: 'center',
       duration: 3000
     });
   }

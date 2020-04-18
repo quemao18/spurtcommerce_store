@@ -25,6 +25,7 @@ import { ListsSandbox } from '../../../core/lists/lists.sandbox';
 import { ConfigService } from '../../../core/service/config.service';
 import { isPlatformBrowser } from '@angular/common';
 import { Subscription } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-products',
@@ -70,7 +71,9 @@ export class ProductsComponent implements OnInit, OnDestroy {
     public listSandbox: ListsSandbox,
     private configService: ConfigService,
     private changeDetectRef: ChangeDetectorRef,
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Object,
+    public translate: TranslateService,
+
   ) {
     // subscribe route params
     this.subscription.push(
@@ -136,6 +139,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     if (window.innerWidth < 1280) {
       this.viewCol = 33.3;
     }
+    this.translate.use(sessionStorage.getItem('lang')); 
   }
 
   /**

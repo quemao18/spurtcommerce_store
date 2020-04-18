@@ -31,6 +31,7 @@ export class TopMenuComponent implements OnInit, OnDestroy {
   public index = 0;
   // public languageKey = 'language';
   private subscriptions: Array<Subscription> = [];
+  public lang: String;
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     public configService: ConfigService,
@@ -52,6 +53,7 @@ export class TopMenuComponent implements OnInit, OnDestroy {
         this.commonSandbox.doGetProfile();
       }
     }
+    this.lang = sessionStorage.getItem('lang');
   }
 
   /**first clear the local storage data.
@@ -63,6 +65,7 @@ export class TopMenuComponent implements OnInit, OnDestroy {
       localStorage.clear();
       sessionStorage.clear();
     }
+    sessionStorage.setItem('lang', this.lang.toString());
     this.commonSandbox.doSignout();
     this.productControl.clearCart();
     this.router.navigate(['/auth']);

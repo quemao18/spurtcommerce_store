@@ -18,8 +18,8 @@ export class GetDirectionsComponent {
   // google maps zoom level
   public zoom = 18;
   // initial center position for the map
-  public lattitudeLocation = 12.9386328;
-  public longitudeLocation = 80.138821;
+  public lattitudeLocation = 10.4845537;
+  public longitudeLocation = -66.8564348;
 
   constructor() {}
 }

@@ -17,6 +17,7 @@ import {CommonSandbox} from '../../../../core/common/common.sandbox';
 import {AccountSandbox} from '../../../../core/account/account.sandbox';
 import {ListsSandbox} from '../../../../core/lists/lists.sandbox';
 import { Subscription } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -47,7 +48,9 @@ export class InformationComponent implements OnInit, OnDestroy {
                 public snackBar: MatSnackBar,
                 public commonSandbox: CommonSandbox,
                 public listsSandbox: ListsSandbox,
-                public accountSandbox: AccountSandbox) {
+                public accountSandbox: AccountSandbox,
+                public translate: TranslateService,
+                ) {
     }
 
     // Initially calls initInfoForm,initPasswordForm,setProfile
@@ -56,6 +59,7 @@ export class InformationComponent implements OnInit, OnDestroy {
         this.initInfoForm();
         this.initPasswordForm();
         this.setProfile();
+        this.translate.use(sessionStorage.getItem('lang')); 
     }
 
     // build a form for info  by gouping the form control

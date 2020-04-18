@@ -9,6 +9,7 @@
  */
 import { Component, OnInit } from '@angular/core';
 import {CommonSandbox} from '../../../../core/common/common.sandbox';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -18,9 +19,13 @@ import {CommonSandbox} from '../../../../core/common/common.sandbox';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(public commonSandbox: CommonSandbox) { }
+  constructor(public commonSandbox: CommonSandbox,
+    public translate: TranslateService,
+    ) { }
 
   ngOnInit() {
+    this.translate.use(sessionStorage.getItem('lang')); 
+
   }
 
 }

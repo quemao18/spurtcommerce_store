@@ -11,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { emailValidator } from '../../theme/utils/app-validators';
 import {ListsSandbox} from '../../../core/lists/lists.sandbox';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-contact',
@@ -23,11 +24,13 @@ export class ContactComponent implements OnInit {
     // validation
     public submitted = false;
     constructor(public formBuilder: FormBuilder,
+                public translate: TranslateService,
                 public listSandbox: ListsSandbox) { }
 
     // Initially calls initContactForm
     ngOnInit() {
         this.initContactForm();
+        this.translate.use(sessionStorage.getItem('lang')); 
     }
     // create form group for the contact form
     initContactForm() {

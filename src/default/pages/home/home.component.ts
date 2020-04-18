@@ -11,6 +11,7 @@ import {Component, OnInit, PLATFORM_ID, Inject} from '@angular/core';
 
 import { isPlatformBrowser } from '@angular/common';
 import {ListsSandbox} from '../../../core/lists/lists.sandbox';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class HomeComponent implements OnInit {
 
     constructor(
         public listSandbox: ListsSandbox,
+        public translate: TranslateService,
         @Inject(PLATFORM_ID) private platformId: Object) {
     }
     // Initially calls getBannerList,getBransList
@@ -34,6 +36,8 @@ export class HomeComponent implements OnInit {
         if (isPlatformBrowser(this.platformId)) {
             localStorage.removeItem('checkout');
         }
+    this.translate.use(sessionStorage.getItem('lang')); 
+
     }
     // fetch banner list from sandbox
     getBannerList() {
