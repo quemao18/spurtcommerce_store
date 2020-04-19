@@ -98,7 +98,9 @@
         "YOURITEMS": "Your items",
         "LOGIN": "Login or Create Account to continue",
         "ADDITEMS": "Add items to place order",
-        "QUICKVIEW": "Quick View"
+        "QUICKVIEW": "Quick View",
+        "PRICELOWTOHIGH": "Price Low To High",
+        "PRICEHIGHTOLOW": "Price High To Low"
     },
     "PRODUCT":{
         "UNAVALIBLE": "Sorry, this item is unavailable. Please choose a different one.",

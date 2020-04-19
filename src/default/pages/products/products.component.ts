@@ -41,7 +41,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   public viewType = 'grid';
   public viewCol = 25;
   public sortings: Array<any>;
-  public sortData: any = 'Price Low To High';
+  public sortData: any = 'CART.PRICELOWTOHIGH';
   condition: any;
   // parameters for product list
   public startKey = 0;
@@ -127,8 +127,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
     // this.listSandbox.getSettings();
     this.sortings = [
-      { order: 'Price Low To High', value: 'ASC' },
-      { order: 'Price High To Low', value: 'DESC' }
+      { order: 'CART.PRICELOWTOHIGH', value: 'ASC' },
+      { order: 'CART.PRICEHIGHTOLOW', value: 'DESC' }
     ];
     // this.imagePath = this.configService.get('resize').imageUrl;
     this.imagePath = this.configService.getImageUrl();
