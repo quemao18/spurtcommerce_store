@@ -44,7 +44,15 @@ export class RequestInterceptor implements HttpInterceptor {
     if (this.userTokenDetail) {
       req = req.clone({
         setHeaders: {
-          Authorization: 'Bearer ' + this.userTokenDetail
+          Authorization: 'Bearer ' + this.userTokenDetail,
+          Language: sessionStorage.getItem('lang')
+        }
+      });
+    }else{
+      req = req.clone({
+        setHeaders: {
+          // Authorization: 'Bearer ' + this.userTokenDetail,
+          Language: sessionStorage.getItem('lang')
         }
       });
     }
