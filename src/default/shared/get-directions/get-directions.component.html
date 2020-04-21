@@ -1,4 +1,4 @@
-<agm-map
+<!-- <agm-map
         [latitude]="lattitudeLocation"
         [longitude]="longitudeLocation"
         [zoom]="zoom"
@@ -10,4 +10,21 @@
             [longitude]="longitudeLocation">
     </agm-marker>
 
-</agm-map>
+</agm-map> -->
+
+<div style="height: 600px">
+<x-map #xmap [Options]="_options" [Box]="_box">
+        <x-map-marker 
+        [Latitude]="lattitudeLocation" 
+        [Longitude]="longitudeLocation"
+        [Title]="'De Casta Home - life & Technology'"
+        [IconInfo]="_iconInfo">
+        <x-info-box
+        [DisableAutoPan]="true"
+        [Title]="'De Casta Home - life & Technology'"
+        [Description]="'CCCT, PB, Frente a la frutería, antiguos cines.'">
+        <!-- <x-info-box-action [Label]="'Click Me'" (ActionClicked)="_click()"></x-info-box-action> -->
+        </x-info-box>
+        </x-map-marker>
+</x-map>
+</div>

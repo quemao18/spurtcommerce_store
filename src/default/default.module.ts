@@ -61,9 +61,9 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
         ShareButtonModule.withConfig({
             debug: true
         }),
-        AgmCoreModule.forRoot({
-            apiKey: 'AIzaSyACnIn05GcgHYwuDIMItnUb-FlhN5HRWns'
-        }),
+        // AgmCoreModule.forRoot({
+        //     apiKey: 'AIzaSyACnIn05GcgHYwuDIMItnUb-FlhN5HRWns'
+        // }),
         DefaultRoutingModule,
         // TranslateModule.forRoot({
         //     loader: {

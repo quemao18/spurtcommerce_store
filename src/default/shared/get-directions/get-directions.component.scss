@@ -1,1 +1,5 @@
 agm-map { height: 500px; /* height is required */ }
+
+.map-container { height: 100%; }
+.map-content { display: block; }
+.description { margin-top: 10px; padding: 15px; background-color: bisque; border: 1px solid orange; }

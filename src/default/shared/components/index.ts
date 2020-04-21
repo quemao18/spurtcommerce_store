@@ -49,12 +49,21 @@ import {CommonService} from '../../../core/common/common.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ControlsProductDetailComponent} from './controls-product-detail/controls-product-detail.component';
 import {GetDirectionsComponent} from '../get-directions/get-directions.component';
-import {AgmCoreModule} from '@agm/core';
+// import {AgmCoreModule} from '@agm/core';
+
+
+import {MapModule, MapAPILoader, MarkerTypeId, IMapOptions, IBox, IMarkerIconInfo, WindowRef,   
+    DocumentRef, MapServiceFactory, 
+    BingMapAPILoaderConfig, BingMapAPILoader, 
+    GoogleMapAPILoader,  GoogleMapAPILoaderConfig
+} from 'angular-maps';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     wheelPropagation: true,
     suppressScrollX: true
 };
+
+const useBing = true;
 
 export const COMPONENTS = [
     MainCarouselComponent,
@@ -87,8 +96,9 @@ export const COMPONENTS = [
         PerfectScrollbarModule,
         SharedModule,
         EffectsModule.forFeature([ProductControlEffect, CommonEffect]),
-        AgmCoreModule,
+        // AgmCoreModule,
         NgbModule,
+        useBing ? MapModule.forRootBing() : MapModule.forRootGoogle()
     ],
     declarations: [COMPONENTS],
 
@@ -99,8 +109,33 @@ export const COMPONENTS = [
     ],
     providers: [
         {provide: PERFECT_SCROLLBAR_CONFIG, useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG},
-        ProductControlService, ProductControlSandbox, CommonSandbox, CommonService
+        ProductControlService, ProductControlSandbox, CommonSandbox, CommonService,
+        { 
+            provide: MapAPILoader, deps: [], useFactory: useBing ? BingMapServiceProviderFactory :  GoogleMapServiceProviderFactory
+        }
     ]
 })
 export class ComponentsModule {
+}
+
+
+export function BingMapServiceProviderFactory(){
+    let bc: BingMapAPILoaderConfig = new BingMapAPILoaderConfig();
+    bc.apiKey ="Av3k-1UVhR_OC_f4NluIl0svWbrojTLltmOWj7chODOA2hSEhgcwODt-LfBrDxT-"; 
+      // replace with your bing map key
+      // the usage of this key outside this plunker is illegal. 
+    bc.branch = "experimental"; 
+      // to use the experimental bing brach. There are some bug fixes for
+      // clustering in that branch you will need if you want to use 
+      // clustering.
+    return new BingMapAPILoader(bc, new WindowRef(), new DocumentRef());
+}
+
+export function GoogleMapServiceProviderFactory(){
+    const gc: GoogleMapAPILoaderConfig = new GoogleMapAPILoaderConfig();
+    gc.apiKey = 'AIzaSyDe2QqXrbtaORvL-I0WHpiI72HxtfTz5Zo';
+      // replace with your google map key
+      // the usage of this key outside this plunker is illegal. 
+    gc.enableClustering = true;
+    return new GoogleMapAPILoader(gc, new WindowRef(), new DocumentRef());
 }
