@@ -14,6 +14,7 @@ import {Component, HostListener, Input, OnInit, ViewChild, PLATFORM_ID,
 import {ListsSandbox} from '../../../../core/lists/lists.sandbox';
 import {Router} from '@angular/router';
 import {AppSettings, Settings} from '../../../app.settings';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-menu',
@@ -42,6 +43,7 @@ export class MenuComponent implements OnInit {
     constructor(public listSandbox: ListsSandbox,
                 public appSettings: AppSettings,
                 @Inject(PLATFORM_ID) private platformId: Object,
+                public translate: TranslateService,
                 public router: Router) {
         this.settings = this.appSettings.settings;
         if (isPlatformBrowser(this.platformId)) {
@@ -51,6 +53,7 @@ export class MenuComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.translate.use(sessionStorage.getItem('lang')); 
     }
 
     /** index for selecting categories.

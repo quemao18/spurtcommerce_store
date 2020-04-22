@@ -7,5 +7,5 @@
         <a mat-button class="colorMenu" routerLinkActive="horizontal-active-link" *ngIf="i < 8" [routerLink]="['/products', category.categoryId]" [routerLinkActiveOptions]="{exact:true}" (click)="indexData(i,category.categoryId)">{{category.name}}
         </a>
     </div>
-    <a mat-button routerLink="/contact" routerLinkActive="horizontal-active-link" [routerLinkActiveOptions]="{exact:true}">Contact</a>
+    <a mat-button routerLink="/contact" routerLinkActive="horizontal-active-link" [routerLinkActiveOptions]="{exact:true}">{{'CONTACT.TITLE' | translate}}</a>
 </mat-toolbar>

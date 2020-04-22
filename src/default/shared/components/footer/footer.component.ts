@@ -17,6 +17,7 @@ import {ListsSandbox} from '../../../../core/lists/lists.sandbox';
 })
 export class FooterComponent implements OnInit {
 
+  today: number = Date.now();
   constructor(public listSandbox: ListsSandbox) { }
     // initially calls listSandbox getPageList
   ngOnInit() {

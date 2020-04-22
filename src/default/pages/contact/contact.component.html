@@ -3,21 +3,21 @@
         <div fxLayout="column" fxLayoutAlign="center center" class="text-center">
             <mat-icon color="primary" class="mat-icon-lg">home</mat-icon>
             <h3 class="primary-text py-1">{{'CONTACT.ADDRESS' | translate}}:</h3>
-            <span class="text-muted">{{(listSandbox.settingDetail$ | async)?.storeAddress}}</span>
+            <span class="text-muted"><a [routerLink]="['/getdirections/']"  href="#">{{(listSandbox.settingDetail$ | async)?.storeAddress}}</a></span>
         </div>
     </div>
     <div fxFlex="100" fxFlex.gt-xs="33.3" ngClass.xs="mt-2">
         <div fxLayout="column" fxLayoutAlign="center center">
             <mat-icon color="primary" class="mat-icon-lg">call</mat-icon>
             <h3 class="primary-text py-1">{{'CONTACT.PHONENUMBER' | translate}}:</h3>
-            <span class="text-muted">{{(listSandbox.settingDetail$ | async)?.storeTelephone}}</span>
+            <span class="text-muted"><a href="tel:'{{(listSandbox.settingDetail$ | async)?.storeTelephone}}'">{{(listSandbox.settingDetail$ | async)?.storeTelephone}}</a></span>
         </div>
     </div>
     <div fxFlex="100" fxFlex.gt-xs="33.3" ngClass.xs="mt-2">
         <div fxLayout="column" fxLayoutAlign="center center">
             <mat-icon color="primary" class="mat-icon-lg">mail_outline</mat-icon>
             <h3 class="primary-text py-1">{{'LOGIN.EMAIL' | translate}}:</h3>
-            <span class="text-muted">{{(listSandbox.settingDetail$ | async)?.storeEmail}}</span>
+            <span class="text-muted"><a href="mailto:'{{(listSandbox.settingDetail$ | async)?.storeEmail}}'">{{(listSandbox.settingDetail$ | async)?.storeEmail}}</a></span>
         </div>
     </div>
     <div class="divider w-100 mt-2"></div>
