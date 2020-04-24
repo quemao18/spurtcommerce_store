@@ -48,6 +48,10 @@
         </div> --> 
     </div>
     <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" class="copyright theme-container">
+        <select #langSelect (change)="changeLang(langSelect.value)">
+            <option [selected]="lang=='es'" value="es" >ES</option>
+            <option [selected]="lang=='en'" value="en" >EN</option>
+        </select>
         <p ngClass.xs="mt-1" class="copyright">Copyright © {{ today | date:'y' }} - {{(listSandbox.settingDetail$ | async)?.storeName}}</p>
     </div>
 </footer>

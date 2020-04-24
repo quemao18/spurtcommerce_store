@@ -9,10 +9,10 @@
     </mat-toolbar> -->
     <mat-toolbar>
         <app-spurt-header-menu [categories]="listSandBox.categoryList$ | async" class="head"></app-spurt-header-menu>
-        <select #langSelect (change)="changeLang(langSelect.value)">
+        <!-- <select #langSelect (change)="changeLang(langSelect.value)">
             <option [selected]="lang=='es'" value="es" >ES</option>
             <option [selected]="lang=='en'" value="en" >EN</option>
-        </select>
+        </select> -->
     </mat-toolbar>
     <app-menu fxShow="false" fxShow.gt-sm [categories]="listSandBox.categoryList$ | async"></app-menu>
 

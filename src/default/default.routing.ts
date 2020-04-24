@@ -44,7 +44,7 @@ export const routes: Routes = [
         path: 'getdirections',
         component: GetDirectionsComponent,
         data: {
-          urls: [{ title: 'Get Directions', url: '' }]
+          urls: [{ title: 'CONTACT.GETMAP', url: '' }]
         }
       },
       {
@@ -52,14 +52,14 @@ export const routes: Routes = [
         canActivate: [AuthGuard],
         loadChildren: './pages/account/account.module#AccountModule',
         data: {
-          urls: [{ title: 'Account Settings', url: '' }]
+          urls: [{ title: 'ACCOUNT.SETTINGS', url: '' }]
         }
       },
       {
         path: 'cart',
         loadChildren: './pages/cart/cart.module#CartModule',
         data: {
-          urls: [{ title: 'Cart', url: '' }]
+          urls: [{ title: 'CART.VIEW', url: '' }]
         }
       },
       {
@@ -67,7 +67,7 @@ export const routes: Routes = [
         // canActivate: [AuthGuard],
         loadChildren: './pages/checkout/checkout.module#CheckoutModule',
         data: {
-          urls: [{ title: 'Checkout', url: '' }]
+          urls: [{ title: 'CART.CHECKOUT', url: '' }]
         }
       },
       {
@@ -75,7 +75,7 @@ export const routes: Routes = [
         loadChildren: './pages/contact/contact.module#ContactModule',
         // canActivate: [AuthGuard],
         data: {
-          urls: [{ title: 'Contact', url: '' }]
+          urls: [{ title: 'CONTACT.TITLE', url: '' }]
         }
       },
       {
@@ -84,7 +84,7 @@ export const routes: Routes = [
         loadChildren:
           './pages/Authentication/authentication.module#AuthenticationModule',
         data: {
-          urls: [{ title: 'Sign In', url: '' }]
+          urls: [{ title: 'LOGIN.SIGNIN', url: '' }]
         }
       },
       {
@@ -99,7 +99,7 @@ export const routes: Routes = [
         path: 'products/:id',
         loadChildren: './pages/products/products.module#ProductsModule',
         data: {
-          urls: [{ title: 'Product Detail ', url: '' }]
+          urls: [{ title: 'PRODUCT.DETAIL', url: '' }]
         }
       }
     ]
@@ -114,6 +114,4 @@ export const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class DefaultRoutingModule {
-  public sigin: String='ssss';
-}
+export class DefaultRoutingModule {}

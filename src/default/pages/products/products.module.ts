@@ -36,7 +36,7 @@ export const routes = [
     component: ProductsComponent,
     pathMatch: 'full',
     data: {
-      urls: [{ title: 'All Products'}]
+      urls: [{ title: 'PRODUCT.ALLPRODUCTS'}]
     }
   },
   {
@@ -44,7 +44,7 @@ export const routes = [
     component: ProductsComponent,
     pathMatch: 'full',
     data: {
-      urls: [{ title: 'All Products'}]
+      urls: [{ title: 'PRODUCT.ALLPRODUCTS'}]
     }
   },
   {
@@ -53,8 +53,8 @@ export const routes = [
     pathMatch: 'full',
     data: {
       urls: [
-        { title: 'Products', url: '/products' },
-        { title: 'Product detail', url: '' }
+        { title: 'PRODUCT.ALLPRODUCTS', url: '/products' },
+        { title: 'PRODUCT.DETAIL', url: '' }
       ]
     }
   }
